@@ -16,6 +16,6 @@ public class StockDataController {
 
     @GetMapping(path = "/all")
     public List<K> selectAll(@RequestParam("code") String code) {
-        return stockDataService.selectAll(code);
+        return stockDataService.selectAllByCode(code);
     }
 }

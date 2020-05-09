@@ -2,6 +2,7 @@ package com.sun.data.web;
 
 import com.sun.common.bean.K;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -9,5 +10,13 @@ import java.util.List;
  */
 public interface GetData {
 
-    List<K> getData(String code);
+    /**
+     * 查询从指定日期到最新
+     *
+     * @param code
+     * @param dateStart
+     * @param dateEnd
+     * @return
+     */
+    List<K> getDayData(String code, LocalDateTime dateStart, LocalDateTime dateEnd);
 }
