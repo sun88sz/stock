@@ -1,5 +1,8 @@
 package com.sun.common.bean;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.sun.common.serialize.DoubleToStringSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,10 +32,12 @@ public class K {
     /**
      * 成交量
      */
+    @JsonSerialize(using = DoubleToStringSerialize.class)
     private Double volume;
     /**
      * 成交额
      */
+    @JsonSerialize(using = DoubleToStringSerialize.class)
     private Double amount;
 
     public boolean contains(K k) {
