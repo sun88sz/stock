@@ -3,6 +3,8 @@ package com.sun.common.bean;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Sun
  */
@@ -15,6 +17,7 @@ public class Typing {
     private K end;
     private TypingEnum type;
     private Double extremum;
+    private LocalDateTime time;
 
     public Typing(K middle, K begin, K end, TypingEnum type) {
         this.middle = middle;
@@ -31,5 +34,12 @@ public class Typing {
     @Override
     public String toString() {
         return type.getDesc() + " :" + middle.getTimeBegin() + " - " + middle.getTimeEnd();
+    }
+
+    public LocalDateTime getTime() {
+        if (middle != null) {
+            return middle.getTimeBegin();
+        }
+        return null;
     }
 }

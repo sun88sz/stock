@@ -1,6 +1,9 @@
 package com.sun.data.service;
 
 import com.sun.common.bean.K;
+import com.sun.common.bean.Typing;
+import com.sun.czsc.Bi;
+import com.sun.data.bean.KData;
 import com.sun.data.bean.KPo;
 import com.sun.data.dao.KDao;
 import com.sun.data.web.GetData;
@@ -72,13 +75,31 @@ public class StockDataService {
 
 
     /**
-     *
      * @param code
      * @return
      */
     public List<K> selectAllByCode(String code) {
         saveLatest(code);
         return selectAllFromDatabase(code);
+    }
+
+    /**
+     *
+     * @param code
+     * @return
+     */
+    public KData typing(String code) {
+        List<K> ks = selectAllByCode(code);
+        Bi bi = new Bi();
+        List<K> ks2 = bi.filter(ks);
+        List<Typing> typing = bi.typing(ks2);
+        List<Typing> line = bi.line(typing);
+
+        KData kData = new KData();
+        kData.setKs(ks);
+        kData.setTypings(line);
+
+        return kData;
     }
 
 }

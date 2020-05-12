@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.sun.common.bean.K;
 import com.sun.common.bean.Typing;
 import com.sun.common.bean.TypingEnum;
-import com.sun.data.web.TencentClient;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.time.LocalDateTime;
@@ -156,21 +155,17 @@ public class Bi {
     }
 
 
-    public static void main(String[] args) {
-
-        TencentClient c = new TencentClient();
-        List<K> ks = c.main();
-
-        Bi bi = new Bi();
-        List<K> ks2 = bi.filter(ks);
-        List<Typing> typing = bi.typing(ks2);
-        List<Typing> line = bi.line(typing);
-
-        line.stream().forEach(
-                l -> {
-                    System.out.println(l.getType().getDesc() + " : " + l.getMiddle().getTimeBegin() + "-" + l.getMiddle().getTimeEnd());
-                }
-        );
-
-    }
+//    public static void main(String[] args) {
+//        Bi bi = new Bi();
+//        List<K> ks2 = bi.filter(ks);
+//        List<Typing> typing = bi.typing(ks2);
+//        List<Typing> line = bi.line(typing);
+//
+//        line.stream().forEach(
+//                l -> {
+//                    System.out.println(l.getType().getDesc() + " : " + l.getMiddle().getTimeBegin() + "-" + l.getMiddle().getTimeEnd());
+//                }
+//        );
+//
+//    }
 }
